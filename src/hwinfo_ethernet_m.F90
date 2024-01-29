@@ -12,7 +12,7 @@ module hwinfo_ethernet_m
          integer(c_int32_t) :: eth_get_num_devices
       end function
    end interface 
-
+   
    public :: eth_get_device_name
    interface
       subroutine c_eth_get_device_name(index, name) bind(c, name='eth_get_device_name')
@@ -53,7 +53,6 @@ contains
 
       name = trim(buf)
    end function eth_get_device_name
-
 
 
 end module 
