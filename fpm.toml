@@ -1,0 +1,22 @@
+name = "hwinfo-fortran"
+version = "0.1.0"
+license = "license"
+author = "Amasaki Shinobu"
+maintainer = "amasaki203@gmail.com"
+copyright = "Copyright 2024, Amasaki Shinobu"
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+module-naming = false
+link = ["ibverbs"]
+[install]
+library = false
+[fortran]
+implicit-typing = false
+implicit-external = false
+source-form = "free"
+
+[dependencies]
+uint-fortran = {git = "https://github.com/ShinobuAmasaki/uint-fortran"}
+
