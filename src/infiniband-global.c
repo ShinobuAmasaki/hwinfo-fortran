@@ -1,3 +1,5 @@
+#ifdef IB
+
 #include <stdio.h>
 #include <infiniband/verbs.h>
 #include <infiniband/arch.h>
@@ -33,3 +35,4 @@ unsigned long long ib_get_guid(void)
 
    return ans; 
 }
+#endif 

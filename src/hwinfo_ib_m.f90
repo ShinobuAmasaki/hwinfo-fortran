@@ -1,3 +1,5 @@
+#ifdef IB
+
 module hwinfo_ib_m
    use, intrinsic :: iso_c_binding, only:c_int32_t
    use :: unsigned_m
@@ -23,3 +25,5 @@ module hwinfo_ib_m
    end interface
    
 end module hwinfo_ib_m
+
+#endif
