@@ -7,6 +7,7 @@ module hwinfo_m
 #ifdef IB
    public :: ib_get_guid
    public :: ib_get_num_devices
+   public :: ib_get_guid_char
 #endif
 
    public :: eth_get_num_devices
