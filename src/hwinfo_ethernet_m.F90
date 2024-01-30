@@ -4,9 +4,11 @@ module hwinfo_ethernet_m
    implicit none
    private
 
+   public :: eth_get_mac_addr_str
+
    public :: eth_get_num_devices
    interface
-      function eth_get_num_devices() bind(c)
+      function eth_get_num_devices() bind(c, name="eth_get_num_devices")
          import c_int32_t
          implicit none
          integer(c_int32_t) :: eth_get_num_devices
@@ -33,6 +35,7 @@ module hwinfo_ethernet_m
       end function eth_get_mac_addr
    end interface
          
+   
 
 contains
 
@@ -53,6 +56,44 @@ contains
 
       name = trim(buf)
    end function eth_get_device_name
+
+
+   function eth_get_mac_addr_str(index, delimiter) result(res)
+      use, intrinsic :: iso_fortran_env, only: int64
+      implicit none
+      integer, intent(in) :: index
+      character(:),allocatable :: res
+      character(*), optional, intent(in) :: delimiter 
+      character :: delim
+      
+      integer :: i
+      character(12) :: buf
+      character(17) :: cache
+
+
+      integer(int64) :: addr
+
+      addr = eth_get_mac_addr(index)
+
+      write(buf, '(z12.12)') addr
+
+      if(present(delimiter)) then
+         delim = delimiter(1:1)
+      else
+         delim = ':'
+      endif
+
+      cache = buf(1:2)
+      do i = 3, 12, 2
+         cache = trim(cache)//delim//buf(i:i+1)
+      end do
+
+      res = cache
+
+   end function eth_get_mac_addr_str
+         
+
+
 
 
 end module 
