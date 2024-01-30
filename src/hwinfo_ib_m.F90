@@ -1,6 +1,5 @@
-#ifdef IB
-
 module hwinfo_ib_m
+#ifdef IB
    use, intrinsic :: iso_c_binding, only:c_int32_t
    use :: unsigned_m
    implicit none
@@ -23,7 +22,8 @@ module hwinfo_ib_m
          type(uint64) :: ib_get_guid
       end function
    end interface
-   
-end module hwinfo_ib_m
 
 #endif
+end module hwinfo_ib_m
+
+
