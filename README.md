@@ -6,13 +6,27 @@ The module `hwinfo-fortran` provides access to hardware information on Fortran u
 This module works on Linux, FreeBSD and macOS.
 To support Windows is in the works.
 
+## Build
+
+Add below in `fpm.toml` of your project:
+
+```toml
+hwinfo-fortran = { git = "https://github.com/shinobuamasaki/hwinfo-fortran"}
+```
+
+Supported compilers are below:
+
+- GNU Compiler Collection (`gcc`, `g++`, `gfortran`)
 
 ## Feature
 
 ### Ethernet
+
 Currently, it is possible to obtain the MAC address of a network interface card (NIC) using Fortran. 
 
 ```fortran
+use :: hwinfo_m
+
 do i = 1, eth_get_num_devices()
    print '(a, a, z12.12)', eth_get_device_name(i), ": MAC_addr=",  eth_get_mac_addr(i)
 end do
