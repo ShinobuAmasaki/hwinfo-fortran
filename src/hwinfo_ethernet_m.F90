@@ -4,7 +4,7 @@ module hwinfo_ethernet_m
    implicit none
    private
 
-   public :: eth_get_mac_addr_str
+   public :: eth_get_mac_addr_char
 
    public :: eth_get_num_devices
    interface
@@ -58,7 +58,7 @@ contains
    end function eth_get_device_name
 
 
-   function eth_get_mac_addr_str(index, delimiter) result(res)
+   function eth_get_mac_addr_char(index, delimiter) result(res)
       use, intrinsic :: iso_fortran_env, only: int64
       implicit none
       integer, intent(in) :: index
@@ -90,10 +90,6 @@ contains
 
       res = cache
 
-   end function eth_get_mac_addr_str
-         
-
-
-
+   end function eth_get_mac_addr_char
 
 end module 
