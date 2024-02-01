@@ -1,6 +1,5 @@
 module hwinfo_ethernet_m
    use, intrinsic :: iso_c_binding
-   use :: unsigned_m
    implicit none
    private
 

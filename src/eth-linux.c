@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 #include <sys/socket.h>
 #include <sys/ioctl.h>
 #include <net/if.h>
@@ -27,8 +28,7 @@ int eth_get_num_devices(void)
    ifconf.ifc_len = sizeof(ifreqs);
 
    if (ioctl(socket_fd, SIOCGIFCONF, &ifconf) == -1) {
-      perror("ioctl");
-      close(socket_fd);
+      perror("ioctl");      close(socket_fd);
       return -1;
    }
 
@@ -48,7 +48,7 @@ void eth_get_device_name(int index, char**name)
    socket_fd = socket(AF_INET, SOCK_DGRAM, 0);
    if (socket_fd == -1) {
       perror("socket");
-      return -1;
+      return;
    }
 
    // Get the information of network devices
@@ -58,7 +58,7 @@ void eth_get_device_name(int index, char**name)
    if (ioctl(socket_fd, SIOCGIFCONF, &ifconf) == -1) {
       perror("ioctl");
       close(socket_fd);
-      return -1;
+      return;
    }
 
    strcpy(*name, ifreqs[index-1].ifr_name);
