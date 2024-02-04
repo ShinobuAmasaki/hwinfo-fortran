@@ -1,7 +1,7 @@
 # hwinfo-fortran
 Hardware information access from Fortran.
 
-The module `hwinfo-fortran` provides access to hardware information on Fortran using OS APIs.
+The module hwinfo-fortran provides access to hardware information on Fortran using OS APIs.
 
 This module works on Linux, FreeBSD and macOS.
 To support Windows is in the works.
